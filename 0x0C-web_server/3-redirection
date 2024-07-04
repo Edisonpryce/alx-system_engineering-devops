@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# configures a new Ubuntu machine to respect requirements
+
+# STEP 1 - make updates
+sudo apt-get update
+
+#iInstall Nginx -y flag to accept promts
+sudo apt-get install -y nginx
+
+# passing string Hello World! to index.html
+echo "<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello World!</p>
+</body>
+</html>" > /var/www/html/index.html
+
+# Nginx server block modified to include a redirect
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.blog.edisonasare.com permanent;"
+sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply changes
+service nginx restart
