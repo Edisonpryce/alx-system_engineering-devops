@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
-# This script confiugures a server web02 to interact with web01
+# Configuring server web02 to communicate with web01
 if ! command -v nginx > /dev/null 2>&1; then
 	sudo apt-get update
 	sudo apt-get install -y nginx
 	ufw allow "Nginx HTTP"
 fi
 
-HOST_NAME=$(hostname)
+HOSTNAME=$(hostname)
 
-NGINX_CONF="/etc/nginx/sites-available/default"
+NGINX_CONFIG="/etc/nginx/sites-available/default"
 
-if [ ! -f "$NGINX_CONF.bak" ]; then
-	sudo cp "$NGINX_CONF" "$NGINX_CONF.bak"
-fi
-
-sudo sed -i '/^ *server *{/,/^ *}$/s/^\( *server *{\)/\1\n    add_header X-Served-By '"$HOST_NAME"';/' "$NGINX_CONF"
+# inserting the variable 
+sudo sed -i '/^ *server *{/,/^ *}$/s/^\( *server *{\)/\1\n    add_header X-Served-By '"$HOSTNAME"';/' "$NGINX_CONFIG"
 
 sudo service nginx start
-
-echo "X-Served-By: $HOST_NAME"
