@@ -17,6 +17,6 @@ backend web_servers
         server 66813-web-02 18.209.223.134:80
 ' >> /etc/haproxy/haproxy.cfg
 
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 # Restart HAproxy with service
 service haproxy restart
-
