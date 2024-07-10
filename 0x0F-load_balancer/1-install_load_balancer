@@ -2,8 +2,8 @@
 # HAproxy, the load balancer
 
 # HAproxy installation
-apt-get update
-apt-get -y install haproxy
+sudo apt-get update
+sudo apt-get -y install haproxy
 
 # Configure to use roundrubin algorithm
 echo '
@@ -17,6 +17,9 @@ backend web_servers
         server 66813-web-02 18.209.223.134:80
 ' >> /etc/haproxy/haproxy.cfg
 
+# enable haproxy to be started by init script
+
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
 # Restart HAproxy with service
-service haproxy restart
+sudo service haproxy restart
