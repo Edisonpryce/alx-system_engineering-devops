@@ -18,7 +18,7 @@ echo "<html>
 </html>" > /var/www/html/index.html
 
 # Nginx server block modified to include a redirect
-string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.blog.edisonasare.com permanent;"
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
 sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 # Restart Nginx to apply changes
