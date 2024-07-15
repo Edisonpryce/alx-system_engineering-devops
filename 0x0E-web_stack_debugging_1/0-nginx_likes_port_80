@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# log into the container with the ubuntu image
-# change the default config file in site enable to listen to port 80
+# # configure nginx on docker container to listen to port 80
 
 sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 service nginx restart
