@@ -10,7 +10,7 @@ import csv
 def main():
     USER_ID = sys.argv[1]
     url_user = f"https://jsonplaceholder.typicode.com/users/{USER_ID}"
-    response_1 = requests.get(url_user)
+    response_user = requests.get(url_user)
     users = response_user.json()
     USERNAME = users.get("username")
 
