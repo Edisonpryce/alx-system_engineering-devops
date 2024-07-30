@@ -2,9 +2,9 @@
 """This task takes in the taks 0 and
     formart it
 """
+import csv
 import requests
 import sys
-import csv
 
 
 def main():
