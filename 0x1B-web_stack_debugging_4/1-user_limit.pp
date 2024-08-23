@@ -1,4 +1,4 @@
-# This puppet manifest changes the OS configuration.
+# configuring os to add user hobelton
 
 user { 'holberton':
   ensure     => 'present',
